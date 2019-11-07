@@ -1,0 +1,34 @@
+<style>
+	form { color: white; font-size:10pt; }
+</style>
+
+<!-- Games section -->
+<section class="games-single-page">
+	<div class="container">
+		<!-- Games section -->
+		<section class="games-single-page">
+			<div class="container">
+				<!-- Games section -->
+				<div class="row">
+					<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
+						<h4>Login</h4>
+						<form>
+						<div class="form-group">
+						    <label for="username">Username</label>
+						    <input type="name" [(ngModel)]="user.username" class="form-control" id="username" name="username">
+
+						</div>
+						<div class="form-group">
+						    <label for="password">Password</label>
+						    <input type="password" [(ngModel)]="user.password" class="form-control" id="password" name="password">
+						</div>
+						  <button (click)=checkLogin() class="btn btn-primary">Login</button> <a href="/resetPassword"> Reset Password</a>
+						  <p> {{loginResult}} </p>
+	  					</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Games end-->		
+	</div>
+</section>

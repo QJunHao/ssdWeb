@@ -1,0 +1,68 @@
+<style>
+	table thead th { color: white; font-size:10pt; }
+	table tbody th { color: white; font-size:10pt; }
+	table tbody td { color: white; font-size:10pt; }
+</style>
+
+<!-- Games section -->
+<section class="games-single-page">
+	<div class="container">
+		<!-- Games section -->
+		<section class="games-single-page">
+			<div class="container">
+				<!-- Games section -->
+				<div class="row">
+					<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
+						<h4>Cosmetic shop</h4>
+						<ng-container *ngIf="userInventory.length > 0">
+					  		<tbody *ngFor="let useritem of userInventory; let i = index">
+					  			<p *ngIf="i<1">
+					  				{{useritem.points}} points left
+					  			</p> 
+					  		</tbody>
+				 		</ng-container>
+						<div class="row justify-content-center">
+    						<div class="col-auto">
+      							<table class="table table-responsive">
+								    <thead>
+								    	<tr>
+									      	<th scope="col">Name</th>
+									      	<th scope="col">Image</th>
+										    <th scope="col">Cost</th>
+										    <th scope="col"></th>
+									    </tr>
+								  	</thead>
+							  		<tbody>
+							  			<tr *ngFor="let item of flair">
+							  				<td>{{item.name}}</td>
+										    <td><img src={{item.image}} height="100" width="150"></td>
+										    <td>{{item.cost}}</td>
+										    <ng-container *ngFor="let useritem of userInventory" >
+										    	<ng-container *ngIf="useritem.id == item.item_id">
+										    		<td>
+										    			<p>Flair purchased</p>
+										    		</td>
+										    		<!-- breakhere -->
+										    	</ng-container>
+									    		<td *ngIf="useritem.points >= item.cost; else notEnoughPoints">
+													<button (click)="purchaseFlair(item.item_id, item.cost)" class="btn btn-primary">Purchase</button>
+												</td>
+										    	<ng-template #notEnoughPoints>
+										    		<td>
+										    			<p>Insufficient points</p>
+										    		</td>
+								    			</ng-template>
+										    </ng-container>
+								    	</tr>
+							  		</tbody>
+								    <p>{{purchaseString}}</p>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Games end-->		
+	</div>
+</section>

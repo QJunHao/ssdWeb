@@ -1,0 +1,58 @@
+
+<!-- Header section -->
+	<header class="header-section">
+		<div class="header-warp">
+			<div class="header-bar-warp d-flex">
+				<!-- site logo -->
+				<a href="home.html" class="site-logo">
+					<img src="assets/img/logo.png" alt="" width="150" height="40">
+				</a>
+				<nav class="top-nav-area w-100">
+					<div class="user-panel">
+						<a *ngIf="!currentUser" href="/login">Login</a>
+						<a *ngIf="!currentUser"> / </a>
+						<a *ngIf="!currentUser" href="/register">Register</a>
+						<a *ngIf="currentUser" (click)="logout()" href="">Logout</a>
+					</div>
+					<!-- Menu -->
+					<ul class="main-menu primary-menu">
+						<li><a *ngIf="currentUser" href="">Tournament</a>
+							<ul class="sub-menu">
+								<li><a href="/dotaTournament">Dota 2</a></li>
+								<li><a href="/lolTournament">LoL</a></li>
+							</ul>
+						</li>
+						<li><a *ngIf="currentUser" href="">Match</a>
+							<ul class="sub-menu">
+								<li><a href="/dotaMatch">Dota 2</a></li>
+								<li><a href="/lolMatch">LoL</a></li>
+							</ul>
+						</li>
+						<li><a *ngIf="currentUser" href="">Pro players</a>
+							<ul class="sub-menu">
+								<li><a href="/dotaPlayer">Dota 2</a></li>
+								<li><a href="/lolPlayer">LoL</a></li>
+							</ul>
+						</li>
+						<li><a *ngIf="currentUser" href="review.html">Poll</a>
+							<ul class="sub-menu">
+								<li><a href="/pollHistory">View poll history</a></li>
+							</ul>
+						</li>
+						<li><a *ngIf="currentUser" href="/flair">Cosmetic Shop</a></li>
+						<li><a *ngIf="currentUser" href="/profile">Account</a>
+							<ul class="sub-menu">
+								<li><a href="/profile">View profile</a></li>
+								<li><a href="game-single.html">Reset password</a></li>
+							</ul>
+						</li>
+					   
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!-- Header section end -->
+
+<router-outlet></router-outlet>
+<!-- Page top end-->

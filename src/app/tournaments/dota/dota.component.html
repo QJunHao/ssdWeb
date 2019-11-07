@@ -1,0 +1,51 @@
+<style>
+	table thead th { color: white; font-size:10pt; }
+	table tbody th { color: white; font-size:10pt; }
+	table tbody td { color: white; font-size:10pt; }
+</style>
+
+<!-- Games section -->
+<section class="games-single-page">
+	<div class="container">
+		<!-- Games section -->
+		<section class="games-single-page">
+			<div class="container">
+				<!-- Games section -->
+				<div class="row">
+					<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
+						<h4>Dota 2 Tournament Information</h4>
+						<div class="row justify-content-center">
+    						<div class="col-auto">
+      							<table class="table table-responsive">
+									  <thead>
+									    <tr>
+									      	<th scope="col">No.</th>
+									      	<th scope="col">Title</th>
+										    <th scope="col">League</th>
+										    <th scope="col">Series</th>
+										    <th scope="col">Date started</th>
+										    <th scope="col">Date end</th>
+										    <th scope="col">More information</th>
+									    </tr>
+									  </thead>
+									  <tbody *ngFor="let item of tournament; let i = index">
+									    <tr>
+										    <th>{{i+1}}</th>
+										    <td>{{item.tournament_name}}</td>
+										    <td>{{item.league_id}}</td>
+											<td>{{item.series_id}}</td>
+										    <td>{{item.begin_at}}</td>
+										    <td>{{item.end_at}}</td>
+										    <td><button class="btn btn-primary">View</button></td>
+									    </tr>
+									  </tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Games end-->		
+	</div>
+</section>

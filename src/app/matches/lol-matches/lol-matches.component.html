@@ -1,0 +1,49 @@
+<style>
+	table thead th { color: white; font-size:10pt; }
+	table tbody th { color: white; font-size:10pt; }
+	table tbody td { color: white; font-size:10pt; }
+</style>
+
+<!-- Games section -->
+<section class="games-single-page">
+	<div class="container">
+		<!-- Games section -->
+		<section class="games-single-page">
+			<div class="container">
+				<!-- Games section -->
+				<div class="row">
+					<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
+						<h4>LoL Match Information</h4>
+						<div class="row justify-content-center">
+    						<div class="col-auto">
+      							<table class="table table-responsive">
+									  <thead>
+									    <tr>
+									      	<th scope="col">No.</th>
+									      	<th scope="col">Match title</th>
+										    <th scope="col">Num of games</th>
+										    <th scope="col">Date started</th>
+										    <th scope="col">Date end</th>
+										    <th scope="col"></th>
+									    </tr>
+									  </thead>
+									  <tbody *ngFor="let item of match; let i = index">
+									    <tr>
+										    <th>{{i+1}}</th>
+										    <td>{{item.match_name}}</td>
+										    <td>{{item.num_of_games}}</td>
+										    <td>{{item.begin_at}}</td>
+										    <td>{{item.end_at}}</td>
+										    <td><button (click)="getOpponentFromMatch(item.match_id)" class="btn btn-primary">Vote</button></td>
+									    </tr>
+									  </tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Games end-->		
+	</div>
+</section>

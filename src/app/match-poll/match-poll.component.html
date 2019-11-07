@@ -1,0 +1,73 @@
+<style>
+	table thead th { color: white; font-size:10pt; }
+	table tbody th { color: white; font-size:10pt; }
+	table tbody td { color: white; font-size:10pt; }
+</style>
+
+<!-- Games section -->
+<section class="games-single-page">
+	<div class="container">
+		<!-- Games section -->
+		<section class="games-single-page">
+			<div class="container">
+				<!-- Games section -->
+				<div class="row">
+					<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
+						<h4>Vote for your desired winning team</h4>
+						<p>You may even win some points if your selected team actually wins the match!</p>
+						<div class="row justify-content-center">
+    						<div class="col-auto">
+      							<table class="table table-responsive">
+									  <thead>
+									    <tr>
+									      	<th scope="col">No.</th>
+									      	<th scope="col">Team Logo</th>
+									      	<th scope="col">Team acronym</th>
+									      	<th scope="col">Team name</th>
+									      	<th scope="col"></th>
+									    </tr>
+									  </thead>
+									  <tbody *ngFor="let item of opponent; let i = index">
+									    <tr>
+										    <th>{{i+1}}</th>
+										    <td><img src={{item.image_url}} height="100" width="150"></td>
+										    <td>{{item.acronym}}</td>
+										    <td>{{item.name}}</td>
+										    <td>
+							    				<button (click)="vote(item.match_id, item.id)" class="btn btn-primary">Vote</button>
+								    		</td>
+
+										    <div *ngFor="let responseItem of predictionResponse" >
+										    	<div *ngIf="responseItem.match_id == item.match_id" >
+										    		<div *ngIf="responseItem.prediction == item.id" >
+										    			<div>{{existingVoteFound()}}</div>
+										    			
+										    		</div>
+										    	</div>
+										    </div>
+
+										    <div [ngClass]="existingvoteFound" *ngIf="true; else existingvoteNotFound">
+										    	<td>
+										    		<p>Vote casted</p>
+										    	</td>
+										    </div>
+									    	<ng-template #existingvoteNotFound>
+									    		<td>
+								    				<button (click)="vote(responseItem.match_id, responseItem.id)" class="btn btn-primary">Vote</button>
+									    		</td>
+							    			</ng-template>
+
+
+									    </tr>
+									  </tbody>
+									  <p> {{voteMsg}} </p>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Games end-->		
+	</div>
+</section>
