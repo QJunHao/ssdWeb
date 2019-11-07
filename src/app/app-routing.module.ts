@@ -13,15 +13,18 @@ import { LolMatchesComponent } from './matches/lol-matches/lol-matches.component
 import { DotaPlayerComponent } from './players/dota-player/dota-player.component';
 import { LolPlayerComponent } from './players/lol-player/lol-player.component';
 
-import { PollResultComponent } from './poll-result/poll-result.component';
 import { PollHistoryComponent } from './poll-history/poll-history.component';
 
 import { MatchPollComponent } from './match-poll/match-poll.component';
-import { MatchViewComponent } from './match-view/match-view.component';
 
 import { FlairComponent } from './flair/flair.component';
 
 import { ProfileComponent } from './profile/profile.component';
+
+import { ProfileComponent } from './profile/profile.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
+import { ResetEmailComponent } from './reset-email/reset-email.component';
 
 import { AuthGuardService } from './service/auth-guard.service';
 
@@ -34,20 +37,21 @@ const routes: Routes = [
 	{ path: 'dotaTournament', component: DotaComponent, canActivate:[AuthGuardService]  },
 	{ path: 'lolTournament', component: LolComponent, canActivate:[AuthGuardService]  },
 
-	{ path: 'dotaMatch', component: DotaMatchesComponent, canActivate:[AuthGuardService]  },
-	{ path: 'lolMatch', component: LolMatchesComponent, canActivate:[AuthGuardService]  },
+	{ path: 'dotaMatch', component: DotaMatchesComponent, },
+	{ path: 'lolMatch', component: LolMatchesComponent },
 
 	{ path: 'dotaPlayer', component: DotaPlayerComponent, canActivate:[AuthGuardService]  },
 	{ path: 'lolPlayer', component: LolPlayerComponent, canActivate:[AuthGuardService]  },
 
-	{ path: 'pollResult', component: PollResultComponent, canActivate:[AuthGuardService]  },
+
 	{ path: 'pollHistory', component: PollHistoryComponent, canActivate:[AuthGuardService]  },
 	{ path: 'matchPoll', component: MatchPollComponent, canActivate:[AuthGuardService]  },
-	{ path: 'matchView', component: MatchViewComponent, canActivate:[AuthGuardService]  },
 
 	{ path: 'flair', component: FlairComponent, canActivate:[AuthGuardService]  },
 	
-	{ path: 'profile', component: ProfileComponent, canActivate:[AuthGuardService]  }
+	{ path: 'profile', component: ProfileComponent, canActivate:[AuthGuardService]  },
+	{ path: 'resetPassword', component: ResetPasswordComponent, canActivate:[AuthGuardService] },
+	{ path: 'resetEmail', component: ResetEmailComponent  }
 ];
 
 @NgModule({
@@ -69,10 +73,8 @@ export const routingComponents = [
 	DotaPlayerComponent,
 	LolPlayerComponent,
 
-	PollResultComponent,
 	PollHistoryComponent,
 	MatchPollComponent,
-	MatchViewComponent,
 
 	FlairComponent,
 	ProfileComponent

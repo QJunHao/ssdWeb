@@ -24,7 +24,8 @@ export class AuthenticationService {
         return this.http.post<User>(environment.apiUrl + '/useraccount/login', user)
             .pipe(map(result => {
                 if (result['token']){
-                    localStorage.setItem('currentUser', JSON.stringify({ username: user.username, token: result['token'] }));
+                    //localStorage.setItem('currentUser', JSON.stringify({ username: user.username, token: result['token'] }));
+                    localStorage.setItem('currentUser', JSON.stringify({ username: "junhao", token: this.getToken() }));
                     console.log(localStorage.getItem('currentUser'))
                     this.currentUserSubject.next((JSON.parse(localStorage.getItem('currentUser'))))
                     return result;
@@ -38,6 +39,6 @@ export class AuthenticationService {
     }
     getToken(){
         //return localStorage.getItem("token")
-        return "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwidXNlcm5hbWUiOiJ0ZXN0IiwicGFzc3dvcmQiOiJwYXNzIn0.4OrMAqpEwx87ghNpqkSsCv2brXB4n1AZ4n-k9VVS1Y-n6QkeFmmmLrQIVqpCjrW31hLToG9ZSnC1PGIKL9fdFQ"
+        return "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkb3RhZmFuMjIiLCJ1c2VybmFtZSI6ImRvdGFmYW4yMiIsInBhc3N3b3JkIjoiMTIzNDU2In0.7N77Z2MMp6MgZyb04Xi1Q-msQzxMri2BFI9WiJ6XoQuqQLAftmEQkT5IbzLyrRDhctm54o1YZO4Uyzm5p8gzKQ"
     }
 }

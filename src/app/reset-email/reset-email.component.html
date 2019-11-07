@@ -14,16 +14,15 @@
 						<h4>Login</h4>
 						<form>
 						<div class="form-group">
-						    <label for="username">Username</label>
-						    <input type="name" [(ngModel)]="user.username" class="form-control" id="username" name="username">
-
+					    <label for="username">Username</label>
+					    <input type="name" [(ngModel)]="username" class="form-control">
 						</div>
 						<div class="form-group">
-						    <label for="password">Password</label>
-						    <input type="password" [(ngModel)]="user.password" class="form-control" id="password" name="password">
+						    <label for="email">Email</label>
+						    <input type="email" [(ngModel)]="email" class="form-control">
 						</div>
-						  <button (click)=checkLogin() class="btn btn-primary">Login</button> <a href="/resetEmail"> Reset Password</a>
-						  <p> {{loginResult}} </p>
+					    <button (click)=checkLogin() class="btn btn-primary">Login</button> <a href="/resetEmail"> Reset Password</a>
+					    <p> {{emailMsg}} </p>
 	  					</form>
 					</div>
 				</div>

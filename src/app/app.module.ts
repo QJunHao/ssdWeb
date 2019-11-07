@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
-import { PollResultComponent } from './poll-result/poll-result.component';
+
 import { PollHistoryComponent } from './poll-history/poll-history.component';
 
 import { ProfileComponent } from './profile/profile.component';
@@ -23,7 +23,9 @@ import { DotaPlayerComponent } from './players/dota-player/dota-player.component
 import { LolPlayerComponent } from './players/lol-player/lol-player.component';
 import { FlairComponent } from './flair/flair.component';
 import { MatchPollComponent } from './match-poll/match-poll.component';
-import { MatchViewComponent } from './match-view/match-view.component';
+
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ResetEmailComponent } from './reset-email/reset-email.component';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { MatchViewComponent } from './match-view/match-view.component';
     LolPlayerComponent,
     FlairComponent,
     MatchPollComponent,
-    MatchViewComponent,
+    ResetPasswordComponent,
+    ResetEmailComponent,
   ],
   imports: [
     BrowserModule,

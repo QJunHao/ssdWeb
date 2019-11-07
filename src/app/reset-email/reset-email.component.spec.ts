@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PollResultComponent } from './poll-result.component';
+import { ResetEmailComponent } from './reset-email.component';
 
-describe('PollResultComponent', () => {
-  let component: PollResultComponent;
-  let fixture: ComponentFixture<PollResultComponent>;
+describe('ResetEmailComponent', () => {
+  let component: ResetEmailComponent;
+  let fixture: ComponentFixture<ResetEmailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PollResultComponent ]
+      declarations: [ ResetEmailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PollResultComponent);
+    fixture = TestBed.createComponent(ResetEmailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

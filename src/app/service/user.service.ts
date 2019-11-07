@@ -20,13 +20,10 @@ export class UserService {
         return this.httpClient.post<User>(environment.apiUrl + '/useraccount/login/', user);
     }
 
-    public deleteUser(user) {
-        return this.httpClient.delete<User>("http://localhost:8080/employees" + "/"+ user.userId);
-    }
-
     public createUser(user) {
         return this.httpClient.post<User>(environment.apiUrl + '/useraccount/create/", user');
     }
+
     public getUser(username){
         return this.httpClient.get(environment.apiUrl + '/useraccount/' + username).pipe(
             map((data: any[]) => data.map((item: any) => new User(
@@ -40,5 +37,9 @@ export class UserService {
                 item.salt,
             ))),
       );
+    }
+
+    public sendResetPasswordEmail(user) {
+        return this.httpClient.post<User>(environment.apiUrl + '/useraccount/forgetpassword');
     }
 }

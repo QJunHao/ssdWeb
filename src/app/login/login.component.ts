@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   user = {
     username: "username123",
-    password: "pass123123",
+    password: "passpass123",
     profile_picture: null,
     mobile_number: null,
     email: null,
@@ -40,6 +40,13 @@ export class LoginComponent implements OnInit {
 
 	ngOnInit() {
     // get return url from route parameters or default to '/'
+    this.authService.login(this.user).pipe(first()).subscribe(
+      data => {
+          this.validLogin = true;
+          this.router.navigate([this.returnUrl]);
+      });
+    console.log("log")
+
     const currentUser = this.authService.currentUserValue;
     if (currentUser) {
       this.router.navigate(['/dotaTournament']);
