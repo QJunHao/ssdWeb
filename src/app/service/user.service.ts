@@ -21,7 +21,7 @@ export class UserService {
     }
 
     public createUser(user) {
-        return this.httpClient.post<User>(environment.apiUrl + '/useraccount/create/", user');
+        return this.httpClient.post<User>(environment.apiUrl + '/useraccount/create/', user)
     }
 
     public getUser(username){
@@ -40,6 +40,6 @@ export class UserService {
     }
 
     public sendResetPasswordEmail(user) {
-        return this.httpClient.post<User>(environment.apiUrl + '/useraccount/forgetpassword');
+        return this.httpClient.post<User>(environment.apiUrl + '/useraccount/forgetpassword', user);
     }
 }

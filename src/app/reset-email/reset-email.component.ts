@@ -8,8 +8,6 @@ import { UserService } from '../service/user.service';
 })
 export class ResetEmailComponent implements OnInit {
 
-  constructor() { }
-
   username = ""
   email = ""
   emailMsg = ""
@@ -19,11 +17,15 @@ export class ResetEmailComponent implements OnInit {
     email: this.email
   }
 
+  constructor(private userService: UserService ) { }
+
   ngOnInit() {
   }
   sendResetPasswordEmail(){
   	this.userService.sendResetPasswordEmail(this.user).subscribe( data => {
-    	console.log(data)
+    	if(data['email_sent'] == "true"){
+        console.log(data['email_sent'])
+      }
     });
   }
 }

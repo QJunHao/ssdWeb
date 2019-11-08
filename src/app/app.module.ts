@@ -27,6 +27,8 @@ import { MatchPollComponent } from './match-poll/match-poll.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ResetEmailComponent } from './reset-email/reset-email.component';
 
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 
 @NgModule({
   declarations: [
@@ -40,14 +42,15 @@ import { ResetEmailComponent } from './reset-email/reset-email.component';
     FlairComponent,
     MatchPollComponent,
     ResetPasswordComponent,
-    ResetEmailComponent,
+    ResetEmailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SmartTableModule
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/comm
 import { Match, MatchAdapter } from '../models/Match.model';
 import { Opponent, OpponentAdapter } from '../models/Opponent.model';
 import { PredictionResponse, PredictionResponseAdapter } from '../models/PredictionResponse.model';
+import { Prediction, PredictionAdapter } from '../models/Prediction.model';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Adapter} from '../models/adapter';

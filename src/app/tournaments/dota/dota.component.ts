@@ -8,6 +8,33 @@ import { TournamentService } from '../../service/tournament.service';
 })
 export class DotaComponent implements OnInit {
 
+  settings = {
+    columns: {
+      No: {
+        title: 'No.'
+      },
+      Title: {
+        title: 'Title'
+      },
+      League: {
+        title: 'League'
+      },
+      Series: {
+        title: 'Series'
+      },
+      Start: {
+        title: 'Date started'
+      },
+      End: {
+        title: 'Date end'
+      },
+      Information: {
+        title: 'More information'
+      }
+    }
+  };
+
+
   constructor(private tournamentService: TournamentService) { }
   tournament = []
 

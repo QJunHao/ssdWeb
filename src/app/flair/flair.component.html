@@ -17,7 +17,7 @@
 						<ng-container *ngIf="userInventory.length > 0">
 					  		<tbody *ngFor="let useritem of userInventory; let i = index">
 					  			<p *ngIf="i<1">
-					  				{{useritem.points}} points left
+					  				Current points: {{useritem.points}}
 					  			</p> 
 					  		</tbody>
 				 		</ng-container>
@@ -37,22 +37,26 @@
 							  				<td>{{item.name}}</td>
 										    <td><img src={{item.image}} height="100" width="150"></td>
 										    <td>{{item.cost}}</td>
-										    <ng-container *ngFor="let useritem of userInventory" >
-										    	<ng-container *ngIf="useritem.id == item.item_id">
-										    		<td>
-										    			<p>Flair purchased</p>
-										    		</td>
-										    		<!-- breakhere -->
-										    	</ng-container>
-									    		<td *ngIf="useritem.points >= item.cost; else notEnoughPoints">
-													<button (click)="purchaseFlair(item.item_id, item.cost)" class="btn btn-primary">Purchase</button>
-												</td>
-										    	<ng-template #notEnoughPoints>
-										    		<td>
-										    			<p>Insufficient points</p>
-										    		</td>
+										    <div *ngFor="let useritem of userInventory" >
+										    	<div *ngIf="useritem.id == item.item_id" >
+										    		<div>{{itemFound()}}</div>
+										    	</div>
+										    	<div *ngIf="itemFound == true; else existingItemNotFound">
+											    	<td>
+											    		<p>Flair purchased</p>
+											    	</td>
+										    	</div>
+										    	<ng-template #existingItemNotFound>
+										    		<td *ngIf="useritem.points >= item.cost; else notEnoughPoints">
+														<button (click)="purchaseFlair(item.item_id, item.cost)" class="btn btn-primary">Purchase</button>
+													</td>
+											    	<ng-template #notEnoughPoints>
+											    		<td>
+											    			<p>Insufficient points</p>
+											    		</td>
+									    			</ng-template>
 								    			</ng-template>
-										    </ng-container>
+										    </div>
 								    	</tr>
 							  		</tbody>
 								    <p>{{purchaseString}}</p>

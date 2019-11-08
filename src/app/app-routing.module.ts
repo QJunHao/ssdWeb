@@ -21,7 +21,6 @@ import { FlairComponent } from './flair/flair.component';
 
 import { ProfileComponent } from './profile/profile.component';
 
-import { ProfileComponent } from './profile/profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 import { ResetEmailComponent } from './reset-email/reset-email.component';
@@ -37,8 +36,8 @@ const routes: Routes = [
 	{ path: 'dotaTournament', component: DotaComponent, canActivate:[AuthGuardService]  },
 	{ path: 'lolTournament', component: LolComponent, canActivate:[AuthGuardService]  },
 
-	{ path: 'dotaMatch', component: DotaMatchesComponent, },
-	{ path: 'lolMatch', component: LolMatchesComponent },
+	{ path: 'dotaMatch', component: DotaMatchesComponent, canActivate:[AuthGuardService] },
+	{ path: 'lolMatch', component: LolMatchesComponent, canActivate:[AuthGuardService] },
 
 	{ path: 'dotaPlayer', component: DotaPlayerComponent, canActivate:[AuthGuardService]  },
 	{ path: 'lolPlayer', component: LolPlayerComponent, canActivate:[AuthGuardService]  },

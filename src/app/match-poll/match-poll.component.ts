@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchService } from '../service/match.service';
 import { Prediction, PredictionAdapter } from '../models/Prediction.model';
+import { Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-match-poll',
@@ -21,7 +22,7 @@ export class MatchPollComponent implements OnInit {
 	existingvoteFound = false
 	voteMsg = ""
 
-	constructor(private matchService: MatchService) { }
+	constructor(private matchService: MatchService, private router: Router) { }
 
 	ngOnInit() {
 		this.existingvoteFound = false
@@ -37,23 +38,24 @@ export class MatchPollComponent implements OnInit {
 	    		this.predictionResponse.push(data[item]);
 	    	}
 	    });
-	    console.log(this.existingvoteFound)
+	    this.voteMsg = localStorage.getItem("voteMsg")
+	    localStorage.removeItem("voteMsg")
 	}
 	vote(match_id, team_id){
 		let currentUserSession = JSON.parse(localStorage.getItem('currentUser'))
 
 		this.prediction.match_id = match_id
-		this.prediction.team_id = team_id
+		this.prediction.prediction = team_id
 		this.prediction.username = currentUserSession.username
 
 	  	this.matchService.vote(this.prediction).subscribe(
 	    data => {
 			this.voteMsg = "You have successfully casted your vote."
+			localStorage.setItem("voteMsg", this.voteMsg)
+			window.location.href = 'matchPoll';
 	    });
 	}
 	public existingVoteFound(){
 		this.existingvoteFound = true
-		console.log(this.existingvoteFound)
-		
 	}
 }
