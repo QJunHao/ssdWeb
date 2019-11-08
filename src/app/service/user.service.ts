@@ -40,4 +40,7 @@ export class UserService {
     public sendResetPasswordEmail(user) {
         return this.httpClient.post<User>(environment.apiUrl + '/useraccount/forgetpassword', user);
     }
+    public changePassword(user) {
+        return this.httpClient.put<User>(environment.apiUrl + '/useraccount/changepassword', user);
+    }
 }

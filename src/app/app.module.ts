@@ -22,13 +22,13 @@ import { LolMatchesComponent } from './matches/lol-matches/lol-matches.component
 import { DotaPlayerComponent } from './players/dota-player/dota-player.component';
 import { LolPlayerComponent } from './players/lol-player/lol-player.component';
 import { FlairComponent } from './flair/flair.component';
-import { MatTableModule } from '@angular/material'
+//import { MatTableModule } from '@angular/material'
 import { MatchPollComponent } from './match-poll/match-poll.component';
 
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ResetEmailComponent } from './reset-email/reset-email.component';
 
-import { Ng2SmartTableModule } from 'ng2-smart-table';
+//import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 @NgModule({
@@ -51,8 +51,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    Ng2SmartTableModule,
-    MatTableModule
+    //Ng2SmartTableModule,
+    //MatTableModule
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
