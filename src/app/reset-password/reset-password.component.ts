@@ -32,7 +32,7 @@ export class ResetPasswordComponent implements OnInit {
       this.errorMsg = "Password and confirm password must be the same."
     }
     else if (!(passwordRegex.test(this.user.password))){
-      this.errorMsg = "Password must have a minimum of 8 characters."
+      this.errorMsg = "Password need to be minimum 8 to 128 characters long!"
     }
     else{
       

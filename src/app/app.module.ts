@@ -28,7 +28,8 @@ import { MatchPollComponent } from './match-poll/match-poll.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ResetEmailComponent } from './reset-email/reset-email.component';
 
-//import { Ng2SmartTableModule } from 'ng2-smart-table';
+//import { Ng2SmartTableModule } from 'ng2-smart-table';\
+// where not working
 
 
 @NgModule({

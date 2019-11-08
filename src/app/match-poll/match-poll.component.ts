@@ -34,7 +34,6 @@ export class MatchPollComponent implements OnInit {
 	    });
 	    this.matchService.checkForExistingVote().subscribe(
 	    data => {
-	    	console.log(data)
 	    	for ( const item in (data)) {
 	    		this.predictionResponse.push(data[item]);
 	    	}
@@ -49,15 +48,14 @@ export class MatchPollComponent implements OnInit {
 		this.prediction.prediction = team_id
 		this.prediction.username = currentUserSession.username
 
-	  	this.matchService.vote(this.prediction).subscribe(
+	  	this.matchService.vote(this.prediction.username, this.prediction).subscribe(
 	    data => {
 			this.voteMsg = "You have successfully casted your vote."
 			localStorage.setItem("voteMsg", this.voteMsg)
-			//window.location.href = 'matchPoll';
+			window.location.href = 'matchPoll';
 	    });
 	}
 	public existingVoteFound(){
-		console.log("changed")
 		this.existingvoteFound = true
 	}
 }
