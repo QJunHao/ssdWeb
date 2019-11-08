@@ -23,6 +23,7 @@ export class ResetEmailComponent implements OnInit {
   }
   sendResetPasswordEmail(){
   	this.userService.sendResetPasswordEmail(this.user).subscribe( data => {
+      console.log(data)
     	if(data['email_sent'] == "true"){
         console.log(data['email_sent'])
       }

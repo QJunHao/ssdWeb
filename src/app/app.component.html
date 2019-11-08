@@ -16,22 +16,18 @@
 					</div>
 					<!-- Menu -->
 					<ul class="main-menu primary-menu">
-						<li><a *ngIf="currentUser" href="">Tournament</a>
+						<li><a *ngIf="currentUser" href="">Dota 2</a>
 							<ul class="sub-menu">
-								<li><a href="/dotaTournament">Dota 2</a></li>
-								<li><a href="/lolTournament">LoL</a></li>
+								<li><a href="/dotaTournament">Tournaments</a></li>
+								<li><a href="/dotaMatch">Matches</a></li>
+								<li><a href="/dotaPlayer">Players</a></li>
 							</ul>
 						</li>
-						<li><a *ngIf="currentUser" href="">Match</a>
+						<li><a *ngIf="currentUser" href="">LoL</a>
 							<ul class="sub-menu">
-								<li><a href="/dotaMatch">Dota 2</a></li>
-								<li><a href="/lolMatch">LoL</a></li>
-							</ul>
-						</li>
-						<li><a *ngIf="currentUser" href="">Pro players</a>
-							<ul class="sub-menu">
-								<li><a href="/dotaPlayer">Dota 2</a></li>
-								<li><a href="/lolPlayer">LoL</a></li>
+								<li><a href="/dotaTournament">Tournaments</a></li>
+								<li><a href="/lolMatch">Matches</a></li>
+								<li><a href="/lolPlayer">Players</a></li>
 							</ul>
 						</li>
 						<li><a *ngIf="currentUser" href="">Poll</a>

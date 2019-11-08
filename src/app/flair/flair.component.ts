@@ -18,7 +18,7 @@ export class FlairComponent implements OnInit {
   itemFound = false
 
   ngOnInit() {
-    this.itemFound = false
+    this.itemFound = false 
   	this.flairService.getAllFlair().subscribe(data => {
       for ( const item in (data)) {
         this.flair.push(data[item]);
@@ -44,7 +44,7 @@ export class FlairComponent implements OnInit {
     });
   }
 
-  itemFound(){
+  existingItemFound(){
     this.itemFound = true
     console.log("isFalse")
   }

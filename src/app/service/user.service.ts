@@ -27,7 +27,7 @@ export class UserService {
     public getUser(username){
         return this.httpClient.get(environment.apiUrl + '/useraccount/' + username).pipe(
             map((data: any[]) => data.map((item: any) => new User(
-               item.username,
+                item.username,
                 item.password,
                 item.profile_picture,
                 item.mobile_number,
