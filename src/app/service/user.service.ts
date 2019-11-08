@@ -32,9 +32,7 @@ export class UserService {
                 item.profile_picture,
                 item.mobile_number,
                 item.email,
-                item.status,
-                item.password_hash,
-                item.salt,
+                item.role
             ))),
       );
     }

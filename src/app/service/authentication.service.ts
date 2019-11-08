@@ -25,7 +25,6 @@ export class AuthenticationService {
             .pipe(map(result => {
                 if (result['token']){
                     localStorage.setItem('currentUser', JSON.stringify({ username: user.username, token: result['token'] }));
-                    //localStorage.setItem('currentUser', JSON.stringify({ username: "junhao", token: this.getToken() }));
                     this.currentUserSubject.next((JSON.parse(localStorage.getItem('currentUser'))))
                     return result;
                 }   
@@ -42,6 +41,5 @@ export class AuthenticationService {
             console.log(currentUserSession.token)
             return currentUserSession.token
         }
-        //return "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkb3RhZmFuMjIiLCJ1c2VybmFtZSI6ImRvdGFmYW4yMiIsInBhc3N3b3JkIjoiMTIzNDU2In0.7N77Z2MMp6MgZyb04Xi1Q-msQzxMri2BFI9WiJ6XoQuqQLAftmEQkT5IbzLyrRDhctm54o1YZO4Uyzm5p8gzKQ"
     }
 }

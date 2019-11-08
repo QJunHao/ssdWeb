@@ -30,11 +30,12 @@
 						    <input type="password" [(ngModel)]="user.password" class="form-control" id="password" name="password">
 						</div>
 						<div class="form-group">
-						    <label for="password">Repeat Password</label>
-						    <input type="password" class="form-control" id="password1" name="password1">
+						    <label for="repeatPassword">Repeat Password</label>
+						    <input type="password" [(ngModel)]="repeatPassword" class="form-control" id="repeatPassword" name="repeatPassword">
 						</div>
 						  	<button class="btn btn-primary" (click)="createUser()">Register account</button>
 						</form>
+						<p> {{errorMsg}} </p>
 					</div>
 				</div>
 			</div>

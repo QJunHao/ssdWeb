@@ -14,14 +14,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   user = {
-    username: "username123",
-    password: "pass123123",
+    username: null,
+    password: null,
     profile_picture: null,
     mobile_number: null,
     email: null,
-    status: null,
-    password_hash: null,
-    salt: null
+    role: null
   }
 
   loginResult = ""
@@ -47,22 +45,25 @@ export class LoginComponent implements OnInit {
 	}
 
   checkLogin(): void {
-    this.submitted = true;
+    if (!this.user.username || !this.user.password){
+      this.loginResult = "Both the username and password are required."
+    }
+    else{
+      this.submitted = true;
 
-    this.loading = true;
-    this.authService.login(this.user).pipe(first()).subscribe(
-      data => {
+      this.loading = true;
+      this.authService.login(this.user).pipe(first()).subscribe(
+        data => {
           this.validLogin = true;
           this.router.navigate([this.returnUrl]);
-      },
-      error => {
+        },
+        error => {
           this.error = error;
           this.loading = false;
-         
-      });
-    if (this.validLogin == false){
-      this.loginResult = "The username or password is not correct"
+        });
+      if (this.validLogin == false){
+        this.loginResult = "The username or password is not correct"
+      }
     }
-    this.loginResult = ""
-  }
+  }  
 }

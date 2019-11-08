@@ -1,38 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { TournamentService } from '../../service/tournament.service';
 
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-dota',
   templateUrl: './dota.component.html',
   styleUrls: ['./dota.component.css']
 })
 export class DotaComponent implements OnInit {
-
-  settings = {
-    columns: {
-      No: {
-        title: 'No.'
-      },
-      Title: {
-        title: 'Title'
-      },
-      League: {
-        title: 'League'
-      },
-      Series: {
-        title: 'Series'
-      },
-      Start: {
-        title: 'Date started'
-      },
-      End: {
-        title: 'Date end'
-      },
-      Information: {
-        title: 'More information'
-      }
-    }
-  };
 
 
   constructor(private tournamentService: TournamentService) { }

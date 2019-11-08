@@ -41,7 +41,7 @@
 										    	<div *ngIf="useritem.id == item.item_id" >
 										    		<div>{{itemFound()}}</div>
 										    	</div>
-										    	<div *ngIf="itemFound == true; else existingItemNotFound">
+										    	<div *ngIf="itemFound == 'true'; else existingItemNotFound">
 											    	<td>
 											    		<p>Flair purchased</p>
 											    	</td>

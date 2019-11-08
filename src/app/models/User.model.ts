@@ -9,9 +9,7 @@ export class User {
         public profile_picture: string,
         public mobile_number: string,
         public email: string,
-        public status: string,
-        public password_hash: string,
-        public salt: string,
+        public role: string
     ) { }
 }
 
@@ -27,9 +25,7 @@ export class UserAdapter implements Adapter<User> {
             item.profile_picture,
             item.mobile_number,
             item.email,
-            item.status,
-            item.password_hash,
-            item.salt
+            item.role
         );
     }
 }
