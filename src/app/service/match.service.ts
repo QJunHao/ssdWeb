@@ -67,6 +67,7 @@ export class MatchService {
     vote(prediction) {
       return this.httpClient.post<Prediction>(environment.apiUrl + '/rest/userprediction/create', prediction)
         .pipe(map(result => {
+          console.log(result)
             if (result['result']){
               return result
             }   

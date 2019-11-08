@@ -38,10 +38,10 @@
 										    <td><img src={{item.image}} height="100" width="150"></td>
 										    <td>{{item.cost}}</td>
 										    <div *ngFor="let useritem of userInventory" >
-										    	<div *ngIf="useritem.id == item.item_id" >
-										    		<div>{{itemFound()}}</div>
+										    	<div *ngIf="useritem.item_id == item.item_id" >
+										    		<div>{{existingItemFound()}}</div>
 										    	</div>
-										    	<div *ngIf="itemFound == 'true'; else existingItemNotFound">
+										    	<div *ngIf="itemFound == true; else existingItemNotFound">
 											    	<td>
 											    		<p>Flair purchased</p>
 											    	</td>
@@ -57,6 +57,7 @@
 									    			</ng-template>
 								    			</ng-template>
 										    </div>
+										    <div>{{resetItemFound()}}</div>
 								    	</tr>
 							  		</tbody>
 								    <p>{{purchaseString}}</p>

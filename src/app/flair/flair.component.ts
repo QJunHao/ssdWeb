@@ -44,8 +44,12 @@ export class FlairComponent implements OnInit {
     });
   }
 
-  existingItemFound(){
+  public existingItemFound(){
     this.itemFound = true
-    console.log("isFalse")
+    console.log("true")
+  }
+  public resetItemFound(){
+    this.itemFound = false
+    console.log("false")
   }
 }

@@ -38,7 +38,6 @@ export class AuthenticationService {
     getToken(){
         let currentUserSession = JSON.parse(localStorage.getItem('currentUser'))
         if (currentUserSession){
-            console.log(currentUserSession.token)
             return currentUserSession.token
         }
     }
