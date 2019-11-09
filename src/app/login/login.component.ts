@@ -6,6 +6,9 @@ import { UserService } from '../service/user.service';
 import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ModalService } from '../_modal';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,26 +26,31 @@ export class LoginComponent implements OnInit {
   }
 
   loginResult = ""
-	validLogin = false
+  validLogin = false
   returnUrl : string
   submitted = false
   loading = false
   error = '';
+  bodyText: string;
 
-	constructor(
+
+  constructor(
     private router: Router,
     private route: ActivatedRoute,
     private authService: AuthenticationService,
-    private userService: UserService 
-  ) { }
+    private userService: UserService,
+    private modalService: ModalService 
+    ) { }
 
-	ngOnInit() {
+  ngOnInit() {
     const currentUser = this.authService.currentUserValue;
     if (currentUser) {
       this.router.navigate(['/dotaTournament']);
     }
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dotaTournament';
-	}
+    this.bodyText = '';
+
+  }
 
   checkLogin(): void {
     if (!this.user.username || !this.user.password){
@@ -55,7 +63,9 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.user).pipe(first()).subscribe(
         data => {
           this.validLogin = true;
-          this.router.navigate([this.returnUrl]);
+          // this.router.navigate([this.returnUrl]);
+          this.modalService.open("custom-modal-1");
+
         },
         error => {
           this.error = error;
@@ -66,4 +76,12 @@ export class LoginComponent implements OnInit {
       }
     }
   }  
+
+  openModal() {
+    this.modalService.open("custom-modal-1");
+  }
+
+  closeModal() {
+    this.modalService.close("custom-modal-1");
+  }
 }
