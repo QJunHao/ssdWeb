@@ -13,21 +13,20 @@
 					<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
 						<h4>Login</h4>
 						<form>
-							<div class="form-group">
-								<label for="username">Username</label>
-								<input type="name" [(ngModel)]="user.username" class="form-control" id="username" name="username">
 
-							</div>
-							<div class="form-group">
-								<label for="password">Password</label>
-								<input type="password" [(ngModel)]="user.password" class="form-control" id="password" name="password">
-							</div>
-							<button (click)=checkLogin() class="btn btn-primary">Login</button> <a href="/resetEmail"> Forgot Password</a>
-							<p> {{loginResult}} </p>
-						</form>
+						<div class="form-group">
+						    <label for="username">Username</label>
+						    <input type="name" [(ngModel)]="user.username" class="form-control" id="username" name="username">
+						</div>
+						<div class="form-group">
+						    <label for="password">Password</label>
+						    <input type="password" [(ngModel)]="user.password" class="form-control" id="password" name="password">
+						</div>
+						  <button (click)=checkLogin() class="btn btn-primary">Login</button> <a href="/resetEmail"> Forgot Password</a>
+						  <p> {{loginResult}} </p>
+	  					</form>
 
-
-						<jw-modal id="custom-modal-1">
+	  					<jw-modal id="custom-modal-1">
 							<h1>One-Time Password (OTP)</h1>
 							<h4>An OTP has been sent to your email</h4>
 							<p>Enter your OTP: <input type="text" [(ngModel)]="otpText" />
@@ -37,13 +36,6 @@
 							<button (click)="resendOTP();">Resend</button>
 							<button (click)="closeModal();">Close</button>
 						</jw-modal>
-<!-- 
-						<jw-modal id="custom-modal-2">
-							<h1 style="height:1000px">A Tall Custom Modal!</h1>
-							<button (click)="closeModal('custom-modal-2');">Close</button>
-						</jw-modal> -->
-
-
 
 					</div>
 				</div>

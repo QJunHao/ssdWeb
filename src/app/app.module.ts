@@ -27,6 +27,7 @@ import { MatchPollComponent } from './match-poll/match-poll.component';
 
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ResetEmailComponent } from './reset-email/reset-email.component';
+import { FlairViewComponent } from './flair-view/flair-view.component';
 
 import { ModalModule } from './_modal';
 
@@ -46,7 +47,8 @@ import { ModalModule } from './_modal';
     FlairComponent,
     MatchPollComponent,
     ResetPasswordComponent,
-    ResetEmailComponent
+    ResetEmailComponent,
+    FlairViewComponent
   ],
   imports: [
     BrowserModule,

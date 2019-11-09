@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
+import { UserInventoryService} from '../service/user-inventory.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +9,10 @@ import { UserService } from '../service/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private userInventoryService: UserInventoryService) { }
+
+  jsonResult = ""
+  userInventory = []
 
   user = {
     username: JSON.parse(localStorage.getItem('currentUser')).username,
@@ -23,12 +27,16 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUser(this.user.username).subscribe( data => {
-        for ( const item in (data)) {
-          this.user.username = data[item]["username"]
-          this.user.email = data[item]["email"]
-          this.user.mobile_number = data[item]["mobile_number"]
-          break;
-        }
+      this.jsonResult = JSON.parse(JSON.stringify(data))
+      this.user.email = this.jsonResult.email
+      this.user.mobile_number = this.jsonResult.mobile_number
     });
+    this.userInventoryService.getCurrentUserFlair(this.user.username).subscribe( data => {
+      if (data.length > 0){
+        for ( const item in (data)) {
+          this.userInventory.push(data[item]);
+        }
+      }}
+    );
   }
 }

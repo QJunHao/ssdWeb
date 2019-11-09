@@ -26,6 +26,9 @@
 						    <h2>{{user.mobile_number}}</h2>
 						</div>
 						</form>
+						<div *ngFor="let item of userInventory">
+						    <img src={{item.image}} height="100" width="150">
+				    	</div>
 					</div>
 				</div>
 			</div>
