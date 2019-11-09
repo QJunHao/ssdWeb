@@ -43,4 +43,10 @@ export class UserService {
     public changePassword(user) {
         return this.httpClient.put<User>(environment.apiUrl + '/useraccount/changepassword', user);
     }
+    public sendOTPEmail(user) {
+        return this.httpClient.post<User>(environment.apiUrl + '/useraccount/sendemailotp', user);
+    }
+    public verifyOTP(username,otp) {
+        return this.httpClient.post<User>(environment.apiUrl + '/useraccount/verify/' + username + '/' + otp);
+    }
 }
