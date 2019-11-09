@@ -30,12 +30,8 @@ export class UserInventoryService {
       return this.httpClient.post<UserInventory>(environment.apiUrl + '/rest/userinventory/buy/'+ username + '/' + item_id + '/' + item_cost, "").pipe(map(result => {
         console.log(environment.apiUrl + '/rest/userinventory/buy/'+ username + '/' + item_id + '/' + item_cost)
         if (result['purchase'] == 'true'){
-          console.log("iftrue")
-            return result;
-        }
-        else{
-           console.log("iffalse")
-        }   
+          return result;
+        }  
     }));
   }
 }

@@ -18,6 +18,7 @@ import { PollHistoryComponent } from './poll-history/poll-history.component';
 import { MatchPollComponent } from './match-poll/match-poll.component';
 
 import { FlairComponent } from './flair/flair.component';
+import { FlairViewComponent } from './flair-view/flair-view.component';
 
 import { ProfileComponent } from './profile/profile.component';
 
@@ -47,6 +48,7 @@ const routes: Routes = [
 	{ path: 'matchPoll', component: MatchPollComponent, canActivate:[AuthGuardService]  },
 
 	{ path: 'flair', component: FlairComponent, canActivate:[AuthGuardService]  },
+	{ path: 'flairView', component: FlairViewComponent, canActivate:[AuthGuardService]  },
 	
 	{ path: 'profile', component: ProfileComponent, canActivate:[AuthGuardService]  },
 	{ path: 'resetPassword', component: ResetPasswordComponent, canActivate:[AuthGuardService] },
@@ -76,5 +78,7 @@ export const routingComponents = [
 	MatchPollComponent,
 
 	FlairComponent,
+	FlairViewComponent,
+	
 	ProfileComponent
 ]

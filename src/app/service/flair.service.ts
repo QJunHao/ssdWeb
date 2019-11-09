@@ -17,13 +17,22 @@ export class FlairService {
 	private adapter: FlairAdapter) { }
 
   	public getAllFlair():Observable<Flair[]>  {
-      console.log("api")
         return this.httpClient.get(environment.apiUrl + '/rest/item/all').pipe(
             map((data: any[]) => data.map((item: any) => new Flair(
                 item.item_id,
   	            item.name,
   	            item.image,
   	            item.cost
+            ))),
+        );
+    }
+    public getFlairByID(itemId):Observable<Flair[]>  {
+        return this.httpClient.get(environment.apiUrl + '/rest/item/' + itemId).pipe(
+            map((data: any[]) => data.map((item: any) => new Flair(
+                item.item_id,
+                item.name,
+                item.image,
+                item.cost
             ))),
         );
     }

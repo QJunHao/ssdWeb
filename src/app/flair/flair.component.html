@@ -37,27 +37,9 @@
 							  				<td>{{item.name}}</td>
 										    <td><img src={{item.image}} height="100" width="150"></td>
 										    <td>{{item.cost}}</td>
-										    <div *ngFor="let useritem of userInventory" >
-										    	<div *ngIf="useritem.item_id == item.item_id" >
-										    		<div>{{existingItemFound()}}</div>
-										    	</div>
-										    	<div *ngIf="itemFound == true; else existingItemNotFound">
-											    	<td>
-											    		<p>Flair purchased</p>
-											    	</td>
-										    	</div>
-										    	<ng-template #existingItemNotFound>
-										    		<td *ngIf="useritem.points >= item.cost; else notEnoughPoints">
-														<button (click)="purchaseFlair(item.item_id, item.cost)" class="btn btn-primary">Purchase</button>
-													</td>
-											    	<ng-template #notEnoughPoints>
-											    		<td>
-											    			<p>Insufficient points</p>
-											    		</td>
-									    			</ng-template>
-								    			</ng-template>
-										    </div>
-										    <div>{{resetItemFound()}}</div>
+									    	<td>
+												<button (click)="addItemToPurchase(item.item_id)" class="btn btn-primary">View</button>
+											</td>
 								    	</tr>
 							  		</tbody>
 								    <p>{{purchaseString}}</p>

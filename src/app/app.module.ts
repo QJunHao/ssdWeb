@@ -27,6 +27,7 @@ import { MatchPollComponent } from './match-poll/match-poll.component';
 
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ResetEmailComponent } from './reset-email/reset-email.component';
+import { FlairViewComponent } from './flair-view/flair-view.component';
 
 //import { Ng2SmartTableModule } from 'ng2-smart-table';\
 // where not working
@@ -44,7 +45,8 @@ import { ResetEmailComponent } from './reset-email/reset-email.component';
     FlairComponent,
     MatchPollComponent,
     ResetPasswordComponent,
-    ResetEmailComponent
+    ResetEmailComponent,
+    FlairViewComponent
   ],
   imports: [
     BrowserModule,
