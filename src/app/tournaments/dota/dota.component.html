@@ -15,33 +15,45 @@
 					<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
 						<h4>Dota 2 Tournament Information</h4>
 						<div class="row justify-content-center">
+							<div class="table-responsive">
+								<mat-form-field>
+									<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+								</mat-form-field>
+								<table mat-table [dataSource]="dataSource" class="table" matSort>
+									<ng-container matColumnDef="tournament_name">
+										<th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+										<td mat-cell *matCellDef="let tournament">{{tournament.tournament_name}}</td>
+									</ng-container>
+
+									<ng-container matColumnDef="league_id">
+										<th mat-header-cell *matHeaderCellDef mat-sort-header>League</th>
+										<td mat-cell *matCellDef="let tournament">{{tournament.league_id}}</td>
+									</ng-container>
+
+									<ng-container matColumnDef="series_id">
+										<th mat-header-cell *matHeaderCellDef mat-sort-header>Series</th>
+										<td mat-cell *matCellDef="let tournament">{{tournament.series_id}}</td>
+									</ng-container>
+
+									<ng-container matColumnDef="begin_at">
+										<th mat-header-cell *matHeaderCellDef mat-sort-header>Date started</th>>
+										<td mat-cell *matCellDef="let tournament">{{tournament.begin_at}}</td>
+									</ng-container>
+
+									<ng-container matColumnDef="end_at">
+										<th mat-header-cell *matHeaderCellDef mat-sort-header>Date end</th>
+										<td mat-cell *matCellDef="let tournament">{{tournament.end_at}}</td>
+									</ng-container>
+
+									<tr mat-header-row *matHeaderRowDef="displayedColumns" color="primary"></tr>
+									<tr mat-row *matRowDef="let row; columns:displayedColumns;"></tr>
+								</table>
+								<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+							</div>
     						<div class="col-auto">
     							<!-- <ng2-smart-table [settings]="settings" [source]="tournament">
-
 								</ng2-smart-table> -->
 								
-      							<table class="table table-responsive">
-									  <thead>
-									    <tr>
-									      	<th scope="col">No.</th>
-									      	<th scope="col">Title</th>
-										    <th scope="col">League</th>
-										    <th scope="col">Series</th>
-										    <th scope="col">Date started</th>
-										    <th scope="col">Date end</th>
-									    </tr>
-									  </thead>
-									  <tbody *ngFor="let item of tournament; let i = index">
-									    <tr>
-										    <th>{{i+1}}</th>
-										    <td>{{item.tournament_name}}</td>
-										    <td>{{item.league_id}}</td>
-											<td>{{item.series_id}}</td>
-										    <td>{{item.begin_at}}</td>
-										    <td>{{item.end_at}}</td>
-									    </tr>
-									  </tbody>
-								</table>
 							</div>
 						</div>
 					</div>
