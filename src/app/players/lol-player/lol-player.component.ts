@@ -14,7 +14,8 @@ export class LolPlayerComponent implements OnInit {
   ngOnInit() {
   	this.playerService.getLolPlayer().subscribe(data => {
       for ( const item in (data)) {
-        this.player.push(data[item]);
+        if (data[item]["first_name"] != "No Record Found")
+          this.player.push(data[item]);
       }
     });
   }
