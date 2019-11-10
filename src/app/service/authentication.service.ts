@@ -10,6 +10,7 @@ import { User, UserAdapter } from '../models/User.model';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+    loginResult = ""
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -24,10 +25,14 @@ export class AuthenticationService {
         return this.http.post<User>(environment.apiUrl + '/useraccount/login', user)
             .pipe(map(result => {
                 if (result['token']){
-                    localStorage.setItem('currentUser', JSON.stringify({ username: user.username, token: result['token'] }));
-                    this.currentUserSubject.next((JSON.parse(localStorage.getItem('currentUser'))))
-                    return result;
-                }   
+                    localStorage.setItem('cacheCurrentUser', JSON.stringify({ username: user.username, token: result['token'] }));
+                    this.loginResult = "valid"
+                    this.currentUserSubject.next(null)
+                    return this.loginResult;
+                }else{
+                    this.loginResult = "invalid"
+                    return this.loginResult
+                } 
             }));
     }
     logout() {
@@ -40,5 +45,13 @@ export class AuthenticationService {
         if (currentUserSession){
             return currentUserSession.token
         }
+    }
+    setcurrentUserSubject(){
+        localStorage.setItem('currentUser', localStorage.getItem('cacheCurrentUser'))
+         localStorage.removeItem('cacheCurrentUser')
+        this.currentUserSubject.next((JSON.parse(localStorage.getItem('currentUser'))))
+    }
+    nullInvalidSession(){
+        this.currentUserSubject.next(null);
     }
 }

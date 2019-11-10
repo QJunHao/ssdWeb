@@ -42,19 +42,15 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private userService: UserService,
     private modalService: ModalService 
-    ) { }
+  ) { }
 
   ngOnInit() {
-    this.registerMsg = localStorage.getItem("registerMsg")
-    localStorage.removeItem("registerMsg")
-    
     const currentUser = this.authService.currentUserValue;
     if (currentUser) {
+     
       this.router.navigate(['/dotaTournament']);
     }
-    //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dotaTournament';
-    this.otpText = '';
-
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dotaTournament';
   }
 
   checkLogin(): void {
@@ -67,34 +63,34 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       this.authService.login(this.user).pipe(first()).subscribe(
         data => {
-          this.validLogin = true;
-          this.router.navigate([this.returnUrl]);
+          if (data == "valid"){
+            this.validLogin = true;
+            this.authService.nullInvalidSession()
+            this.openModal()
+            //this.router.navigate([this.returnUrl]);
+          }
+          else{
+            this.loginResult = "The username or password is not correct"
+          }
         },
         error => {
           this.error = error;
           this.loading = false;
-        });
-      if (this.validLogin == false){
-        this.loginResult = "The username or password is not correct"
-      }
-      else{
-        // if login credentials correct, open pop up modal
-        this.modalService.open("custom-modal-1");
-        // send email once credentials validated
-        this.userService.sendOTPEmail(this.user).subscribe( data => {
-          this.user.username = this.user.username
-        })
-      }
+        }
+      );
     }
-  }  
-
+  }
   // function to open pop up
   openModal() {
+    this.resendOTP()
     this.modalService.open("custom-modal-1");
   }
   // function to close pop up
   closeModal() {
     this.modalService.close("custom-modal-1");
+    this.user.username = null
+    this.user.password = null
+    this.authService.logout()
   }
 
   checkRegex(): void {
@@ -103,6 +99,7 @@ export class LoginComponent implements OnInit {
       this.errorMsg = "Please only enter 6 digit number"
     }
     else{
+      
       this.errorMsg = "Verifying..."
       //send email
       this.userService.verifyOTP(this.user.username, this.otpText).subscribe(
@@ -113,8 +110,8 @@ export class LoginComponent implements OnInit {
             //if OTP correct
             this.errorMsg = "Correct OTP" 
             this.modalService.close("custom-modal-1");
-            this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dotaTournament';
-            this.router.navigate([this.returnUrl]);
+            this.authService.setcurrentUserSubject()
+            this.router.navigate(['/dotaTournament']);
           }
           else{
             //if OTP wrong
@@ -130,8 +127,5 @@ export class LoginComponent implements OnInit {
     this.userService.sendOTPEmail(this.user).subscribe( data => {
       this.user.username = this.user.username
     })
-  }
-
-
-
+  }  
 }
