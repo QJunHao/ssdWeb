@@ -29,7 +29,6 @@
 										    <th scope="col">Series</th>
 										    <th scope="col">Date started</th>
 										    <th scope="col">Date end</th>
-										    <th scope="col">More information</th>
 									    </tr>
 									  </thead>
 									  <tbody *ngFor="let item of tournament; let i = index">
@@ -40,7 +39,6 @@
 											<td>{{item.series_id}}</td>
 										    <td>{{item.begin_at}}</td>
 										    <td>{{item.end_at}}</td>
-										    <td><button class="btn btn-primary">View</button></td>
 									    </tr>
 									  </tbody>
 								</table>

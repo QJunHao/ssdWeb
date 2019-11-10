@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   otpText: string;
   errorMsg = "";
   jsonResult = "";
+  registerMsg = ""
 
   constructor(
     private router: Router,
@@ -44,6 +45,9 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.registerMsg = localStorage.getItem("registerMsg")
+    localStorage.removeItem("registerMsg")
+    
     const currentUser = this.authService.currentUserValue;
     if (currentUser) {
       this.router.navigate(['/dotaTournament']);

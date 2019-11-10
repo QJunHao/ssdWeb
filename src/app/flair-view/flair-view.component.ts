@@ -20,7 +20,9 @@ export class FlairViewComponent implements OnInit {
 	constructor(private flairService: FlairService, private userInventoryService: UserInventoryService) { }
 
 	ngOnInit() {
-	this.userInventoryService.getCurrentUserFlair(this.username).subscribe(data => {
+    this.purchaseString = localStorage.getItem("purchaseMsg")
+    localStorage.removeItem("purchaseMsg")
+	  this.userInventoryService.getCurrentUserFlair(this.username).subscribe(data => {
     	if (data.length > 0){
         this.userCurrentPoint = Number(data[0]["points"])
       	for ( const item in (data)) {
@@ -40,14 +42,18 @@ export class FlairViewComponent implements OnInit {
 	}
   	
 	public purchaseFlair(item_id, item_cost): void {
+    this.purchaseString = "Purchasing flair. Please wait..."
     this.userInventoryService.purchaseFlair(this.username, Number(item_id), Number(item_cost)).subscribe(
         data => {
             this.purchaseString = "Flair has been purchased successfully."
           	localStorage.setItem("purchaseMsg", this.purchaseString)
-          	window.location.href = 'flair';
+          	window.location.href = 'flairView';
     	});
   	}
   public existingItemFound(){
     this.itemFound = true
   }
+  public backToShop(){
+    window.location.href = 'flair';
+  } 
 }
