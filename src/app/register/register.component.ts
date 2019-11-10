@@ -42,27 +42,35 @@ export class RegisterComponent implements OnInit {
       this.errorMsg = "Username must have at least 4 characters and a maximum length of 128 characters. Special characters are not allowed."
     }
     else if (!(passwordRegex.test(this.user.password))){
-      this.errorMsg = "Password must have a minimum of 8 characters"
+      this.errorMsg = "Password must have a minimum of 8 and not more than 128 characters"
     }
     else if (!(mobileRegex.test(this.user.mobile_number))){
       this.errorMsg = "Mobile number must contains 8 numbers and starts with 8 or 9"
     }
     // else if (!(emailRegex.test(this.user.email))){
-    //   this.errorMsg = "Email must be in a valid email format"
+    //   this.errorMsg = "Please enter a valid email address!"
     // }
     else if (this.repeatPassword != this.user.password){
-      this.errorMsg = "Confirm password must be the same as password"
+      this.errorMsg = "Please check that your password is the same as above!"
     }
     else {
-      this.userService.createUser(this.user).subscribe( data => {
-        this.user.username = null
-        this.user.password = null
-        this.user.profile_picture = null
-        this.user.mobile_number = null
-        this.user.email = null
-        this.user.role = false
-        this.repeatPassword = null
-        this.errorMsg = "Account created successfully"
+      this.userService.getUser(this.user.username).subscribe( data => {
+        if (this.user.username == data["username"])
+          this.errorMsg = "Username has already been used!"
+        else{
+          this.errorMsg = "Signing Up. Please wait…"
+          this.userService.createUser(this.user).subscribe( data => {
+            this.user.username = null
+            this.user.password = null
+            this.user.profile_picture = null
+            this.user.mobile_number = null
+            this.user.email = null
+            this.user.role = false
+            this.repeatPassword = null
+            window.location.href = 'login';
+            localStorage.setItem("registerMsg", "You may log in with your new account now!")
+          });
+        }
       });
     }
   }

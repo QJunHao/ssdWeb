@@ -24,19 +24,6 @@ export class UserService {
         return this.httpClient.post<User>(environment.apiUrl + '/useraccount/create/', user)
     }
 
-    // public getUser(username){
-    //     return this.httpClient.get(environment.apiUrl + '/useraccount/' + username).pipe(
-    //         map((data: any[]) => data.map((item: any) => new User(
-    //             item.username,
-    //             item.password,
-    //             item.profile_picture,
-    //             item.mobile_number,
-    //             item.email,
-    //             item.role
-    //         ))),
-    //   );
-    // }
-
     public getUser(username){
         return this.httpClient.get(environment.apiUrl + '/useraccount/' + username);
     }
@@ -51,6 +38,6 @@ export class UserService {
         return this.httpClient.post<User>(environment.apiUrl + '/useraccount/sendemailotp', user);
     }
     public verifyOTP(username,otp) {
-        return this.httpClient.post<User>(environment.apiUrl + '/useraccount/verify/' + username + '/' + otp);
+        return this.httpClient.post<User>(environment.apiUrl + '/useraccount/verify/' + username + '/' + otp, "");
     }
 }

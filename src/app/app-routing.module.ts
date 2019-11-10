@@ -52,7 +52,8 @@ const routes: Routes = [
 	
 	{ path: 'profile', component: ProfileComponent, canActivate:[AuthGuardService]  },
 	{ path: 'resetPassword', component: ResetPasswordComponent, canActivate:[AuthGuardService] },
-	{ path: 'resetEmail', component: ResetEmailComponent  }
+	{ path: 'resetEmail', component: ResetEmailComponent  },
+	{ path: '**', component: LoginComponent },
 ];
 
 @NgModule({

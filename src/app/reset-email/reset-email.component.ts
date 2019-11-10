@@ -10,7 +10,7 @@ export class ResetEmailComponent implements OnInit {
 
   username = ""
   email = ""
-  emailMsg = ""
+  ErrorMsg = ""
 
   user = {
     username: this.username,
@@ -22,11 +22,11 @@ export class ResetEmailComponent implements OnInit {
   ngOnInit() {
   }
   sendResetPasswordEmail(){
+    if (!this.username || !this.email){
+      this.ErrorMsg = "All fields are required" 
+    }
   	this.userService.sendResetPasswordEmail(this.user).subscribe( data => {
-      console.log(data)
-    	if(data['email_sent'] == "true"){
-        console.log(data['email_sent'])
-      }
+      this.ErrorMsg = "The new password has been sent to your email if you have entered a valid email address currently in the database."
     });
   }
 }

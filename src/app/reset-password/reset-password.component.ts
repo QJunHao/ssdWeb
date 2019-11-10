@@ -35,7 +35,6 @@ export class ResetPasswordComponent implements OnInit {
       this.errorMsg = "Password need to be minimum 8 to 128 characters long!"
     }
     else{
-      
       this.userService.changePassword(this.user).subscribe( data => {
         console.log(this.user.password)
         console.log("change")
