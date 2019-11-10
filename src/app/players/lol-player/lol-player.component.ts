@@ -13,7 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class LolPlayerComponent implements OnInit {
   displayedColumns = ['name', 'image_url', 'first_name', 'last_name', 'team_name', 'hometown']
-  dataSource: MatTableDataSource<Tournament>;
+  dataSource: MatTableDataSource<Player>;
   player = []
 
   @ViewChild(MatPaginator, { static : false }) paginator: MatPaginator;

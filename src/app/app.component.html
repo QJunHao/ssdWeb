@@ -30,10 +30,13 @@
 								<li><a href="/lolPlayer">Players</a></li>
 							</ul>
 						</li>
-						<li><a *ngIf="currentUser" href="/flair">Shop</a></li>
+						<li><a *ngIf="currentUser" href="">Shop</a>
+							<ul class="sub-menu">
+								<li><a href="/flair">Flair</a></li>
+							</ul>
+						</li>
 						<li><a *ngIf="currentUser" href="/profile">Account</a>
 							<ul class="sub-menu">
-								<li><a href="/profile">View profile</a></li>
 								<li><a href="/resetPassword">Reset password</a></li>
 							</ul>
 						</li>

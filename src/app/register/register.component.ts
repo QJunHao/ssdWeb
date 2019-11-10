@@ -34,7 +34,8 @@ export class RegisterComponent implements OnInit {
     var passwordRegex = new RegExp('^[^\\t\\n\\r]{8,128}$')
     var mobileRegex = new RegExp('^(8|9)\\d{7}$') 
     //var emailRegex = new RegExp('^(?:[a-z0-9!#$%&\'*+/=?^_{|}~-]+(?:\\\\.[a-z0-9!#$%&\'*+/=?^_{|}~-]+)*|"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$)')
-
+    var emailRegex = new RegExp('[a-z0-9]+@[a-z0-9]+\.[a-z]{2,3}')
+   
     if (!this.user.username || !this.user.password || !this.user.mobile_number || !this.user.email || !this.repeatPassword){
       this.errorMsg = "All fields are required"
     }
@@ -47,9 +48,9 @@ export class RegisterComponent implements OnInit {
     else if (!(mobileRegex.test(this.user.mobile_number))){
       this.errorMsg = "Mobile number must contains 8 numbers and starts with 8 or 9"
     }
-    // else if (!(emailRegex.test(this.user.email))){
-    //   this.errorMsg = "Please enter a valid email address!"
-    // }
+    else if (!(emailRegex.test(this.user.email))){
+      this.errorMsg = "Please enter a valid email address!"
+    }
     else if (this.repeatPassword != this.user.password){
       this.errorMsg = "Please check that your password is the same as above!"
     }

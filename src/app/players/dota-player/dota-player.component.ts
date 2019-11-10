@@ -13,7 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class DotaPlayerComponent implements OnInit {
   displayedColumns = ['name', 'image_url', 'first_name', 'last_name', 'team_name', 'hometown']
-  dataSource: MatTableDataSource<Tournament>;
+  dataSource: MatTableDataSource<Player>;
   player = []
 
   @ViewChild(MatPaginator, { static : false }) paginator: MatPaginator;
@@ -32,7 +32,7 @@ export class DotaPlayerComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
   }
-   applyFilter(filterValue: string) {
+  applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {

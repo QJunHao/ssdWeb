@@ -42,6 +42,9 @@ export class ResetPasswordComponent implements OnInit {
         if(data["updated"] == "true"){
           this.errorMsg = "Password has been updated successfully."
         }
+        else{
+          this.errorMsg = "Unable to use old password as new password."
+        }
       });
     }
   }

@@ -50,7 +50,6 @@ const routes: Routes = [
 	{ path: 'flair', component: FlairComponent, canActivate:[AuthGuardService]  },
 	{ path: 'flairView', component: FlairViewComponent, canActivate:[AuthGuardService]  },
 	
-	{ path: 'profile', component: ProfileComponent, canActivate:[AuthGuardService]  },
 	{ path: 'resetPassword', component: ResetPasswordComponent, canActivate:[AuthGuardService] },
 	{ path: 'resetEmail', component: ResetEmailComponent  },
 	{ path: '**', component: LoginComponent },

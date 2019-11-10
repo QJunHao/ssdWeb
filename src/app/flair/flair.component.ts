@@ -16,7 +16,7 @@ export class FlairComponent implements OnInit {
   userInventory = []
 
   ngOnInit() {
-  	this.flairService.getAllFlair().subscribe(data => {
+    this.flairService.getAllFlair().subscribe(data => {
       for ( const item in (data)) {
         this.flair.push(data[item]);
       }
