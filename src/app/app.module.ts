@@ -29,6 +29,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ResetEmailComponent } from './reset-email/reset-email.component';
 import { FlairViewComponent } from './flair-view/flair-view.component';
 
+import { ModalModule } from './_modal';
+
 //import { Ng2SmartTableModule } from 'ng2-smart-table';\
 // where not working
 
@@ -54,6 +56,7 @@ import { FlairViewComponent } from './flair-view/flair-view.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ModalModule
     //Ng2SmartTableModule,
     //MatTableModule
   ],
