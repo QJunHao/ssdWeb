@@ -22,7 +22,7 @@ export class FlairViewComponent implements OnInit {
 	ngOnInit() {
 	this.userInventoryService.getCurrentUserFlair(this.username).subscribe(data => {
     	if (data.length > 0){
-        this.userCurrentPoint = data[0]["points"]
+        this.userCurrentPoint = Number(data[0]["points"])
       	for ( const item in (data)) {
         		this.userInventory.push(data[item]);
       	}
