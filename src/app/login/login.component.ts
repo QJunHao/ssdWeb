@@ -108,14 +108,13 @@ export class LoginComponent implements OnInit {
           // this.errorMsg =  "hihi " + typeof this.jsonResult.verified;  
           if(this.jsonResult.verified === "true"){
             //if OTP correct
-            this.errorMsg = "Correct OTP" 
             this.modalService.close("custom-modal-1");
             this.authService.setcurrentUserSubject()
             this.router.navigate(['/dotaTournament']);
           }
           else{
             //if OTP wrong
-            this.errorMsg = "Incorrect OTP"
+            this.errorMsg = "Wrong OTP!"
           }    
         });        
     }
